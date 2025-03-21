@@ -37,52 +37,38 @@ const invoices = ref([
     category: "Utility",
     paymentMethod: "Credit Card",
   },
+
   {
     invoice: "INV002",
-    paymentStatus: "Pending",
-    totalAmount: "GHS 150.00",
-    billerName: "MTN Ghana",
-    category: "Airtime",
-    paymentMethod: "Mobile Money",
+    paymentStatus: "pending",
+    totalAmount: "GHS 250.00",
+    billerName: "Electricity Company of Ghana",
+    category: "Utility",
+    paymentMethod: "Apple Pay",
   },
+
   {
     invoice: "INV003",
-    paymentStatus: "Failed",
-    totalAmount: "GHS 350.00",
-    billerName: "Netflix",
-    category: "TV Subscription",
-    paymentMethod: "Brij Wallet",
+    paymentStatus: "Pending",
+    totalAmount: "GHS 250.00",
+    billerName: "Ghana Water Company limited",
+    category: "Utility",
+    paymentMethod: "Apple Pay",
   },
   {
     invoice: "INV004",
-    paymentStatus: "Success",
-    totalAmount: "GHS 450.00",
-    billerName: "Fortnite",
-    category: "Gaming",
-    paymentMethod: "Credit Card",
+    paymentStatus: "Failed",
+    totalAmount: "GHS 500",
+    billerName: "Passport Services",
+    category: "Government",
+    paymentMethod: "Apple Pay",
   },
   {
     invoice: "INV005",
     paymentStatus: "Success",
-    billerName: "XBOX",
-    category: "Gaming",
-    totalAmount: "GHS 550.00",
-    paymentMethod: "Mobile Money",
-  },
-  {
-    invoice: "INV006",
-    paymentStatus: "Pending",
-    totalAmount: "GHS 200.00",
-    billerName: "Telecel Ghana Broadband",
-    category: "Broadband",
-    paymentMethod: "Brij Wallet",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Failed",
-    totalAmount: "GHS 300.00",
-    billerName: "DSTV Ghana",
-    category: "TV Subscription",
+    totalAmount: "GHS 500",
+    billerName: "Passport Services",
+    category: "Government",
     paymentMethod: "Credit Card",
   },
 ]);
@@ -200,7 +186,7 @@ const prevPage = () => {
             >
             <TableCell
               ><div>
-                <p class="text-base text-nowrap font-medium">24 Jan,2024</p>
+                <p class="text-base text-nowrap font-medium">24 Jan,2025</p>
                 <p class="text-sm">10:00am</p>
               </div></TableCell
             >

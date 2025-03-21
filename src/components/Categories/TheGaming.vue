@@ -4,12 +4,12 @@ import ArrowDown from "../icons/common/arrowDown.vue";
 import TheCustomDropdown from "../common/TheCustomDropdown.vue";
 import { useRouter } from "vue-router";
 import { gamingStore } from "@/stores/categories/gamingStore";
-import ghanaImage from "@/assets/ghana.png"
-import nigeriaImage from "@/assets/nigeria.png"
-import kenyaImage from "@/assets/kenya.png"
-import xboxImage from "@/assets/homeview/xbox.png"
-import fortniteImage from "@/assets/homeview/fortnite.png"
-import playstationImage from "@/assets/homeview/playstation.png"
+import ghanaImage from "@/assets/ghana.png";
+import nigeriaImage from "@/assets/nigeria.png";
+import kenyaImage from "@/assets/kenya.png";
+import xboxImage from "@/assets/homeview/xbox.png";
+import fortniteImage from "@/assets/homeview/fortnite.png";
+import playstationImage from "@/assets/homeview/playstation.png";
 
 const router = useRouter();
 const gameStore = gamingStore();
@@ -52,53 +52,11 @@ function Continue() {
 <template>
   <form @submit.prevent="Continue">
     <div class="p-3 2xl:pl-10 pl-5 font-nunito">
-      <h2 class="font-bold text-lg mb-10">Purchase Gaming Voucher</h2>
+      <h2 class="font-bold text-lg mb-5">Passport Service</h2>
       <!---->
-      <div class="mb-10">
-        <label class="font-meduim block text-base mb-2" for="country"
-          >Biller Country</label
-        >
-        <div class="2xl:w-[587px] h-[58px] w-full border rounded-lg px-5 pt-2">
-          <div class="relative">
-            <!-- Custom Dropdown -->
-            <TheCustomDropdown
-              :options="country"
-              v-model:selectedOption="gameStore.selectedCountry"
-            />
-            <!--Arrow Icon -->
-            <div
-              class="absolute inset-y-0 right-0 flex items-center pointer-events-none z-30"
-            >
-              <ArrowDown />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!---->
-      <div class="mb-10">
-        <label class="font-meduim block text-base mb-2" for="country"
-          >Gaming Service</label
-        >
-        <div class="2xl:w-[587px] h-[58px] w-full border rounded-lg px-5 pt-2">
-          <div class="relative">
-            <!-- Custom Dropdown -->
-            <TheCustomDropdown
-              :options="gamingOptions"
-              v-model:selectedOption="gameStore.selectedGame"
-            />
-            <!--Arrow Icon -->
-            <div
-              class="absolute inset-y-0 right-0 flex items-center pointer-events-none z-30"
-            >
-              <ArrowDown />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!---->
-      <div class="mb-10">
-        <label class="font-meduim block text-base mb-2" for="country"
-          >Amount</label
+      <div class="mb-5">
+        <label class="font-meduim block text-base mb-2" for="meterNumber"
+          >First Name</label
         >
         <div
           class="2xl:w-[587px] h-[58px] w-full border rounded-lg px-5 flex items-center justify-between"
@@ -106,12 +64,41 @@ function Continue() {
           <!---->
           <input
             class="outline-none w-full"
-            placeholder="Amount"
+            placeholder="First Name"
             type="text"
-            v-model="gameStore.rechargeAmount"
           />
+        </div>
+      </div>
+      <!---->
+      <div class="mb-5">
+        <label class="font-meduim block text-base mb-2" for="meterNumber"
+          >Last Name</label
+        >
+        <div
+          class="2xl:w-[587px] h-[58px] w-full border rounded-lg px-5 flex items-center justify-between"
+        >
           <!---->
-          <p class="text-paybill-secondary text-base font-bold">GHS</p>
+          <input
+            class="outline-none w-full"
+            placeholder="Last Name"
+            type="text"
+          />
+        </div>
+      </div>
+      <!---->
+      <div class="mb-5">
+        <label class="font-meduim block text-base mb-2" for="meterNumber"
+          >Email Address</label
+        >
+        <div
+          class="2xl:w-[587px] h-[58px] w-full border rounded-lg px-5 flex items-center justify-between"
+        >
+          <!---->
+          <input
+            class="outline-none w-full"
+            placeholder="Email Address"
+            type="email"
+          />
         </div>
       </div>
       <!---->
@@ -143,10 +130,10 @@ function Continue() {
             class="outline-none w-full"
             type="text"
             placeholder="mobile number"
-            v-model="gameStore.mobileNumber"
           />
         </div>
       </div>
+
       <!---->
       <div>
         <button

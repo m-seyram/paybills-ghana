@@ -274,31 +274,11 @@ const setActive = (index) => {
                   alt="visa"
               /></ThePaymentContainer>
               <!---->
-              <ThePaymentContainer class="pt-2"
-                ><img
-                  class="h-12"
-                  src="../assets//homeview/telecel-ghana.png"
-                  alt="telecel"
-              /></ThePaymentContainer>
-              <!---->
-              <ThePaymentContainer class="pt-2"
-                ><img class="h-12" src="../assets//homeview/mtn.png" alt="mtn"
-              /></ThePaymentContainer>
-
-              <!---->
-              <ThePaymentContainer class="pt-2"
-                ><img
-                  class="h-14"
-                  src="../assets/homeview/airtelTigo.png"
-                  alt="airtelTigo"
-              /></ThePaymentContainer>
-
-              <!---->
               <ThePaymentContainer class="pt-5"
                 ><img
-                  class="h-10"
-                  src="../assets/homeview/brij-wallet.png"
-                  alt="brij-wallet"
+                  class="h-10 "
+                  src="../assets/homeview/apple-pay.jpg"
+                  alt="apple-pay"
               /></ThePaymentContainer>
             </div>
           </div>
