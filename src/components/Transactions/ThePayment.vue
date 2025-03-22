@@ -3,6 +3,7 @@ import { useRoute } from "vue-router";
 import ThePaymentSource from "./ThePaymentSource.vue";
 import { electricityStore } from "@/stores/categories/electricityStore";
 import { waterBillStore } from "@/stores/categories/waterBillStore";
+import { passportStore } from "@/stores/categories/passportStore";
 
 const route = useRoute();
 const storeType = route.params.storeType;
@@ -14,6 +15,9 @@ const storeMapping = {
   },
   water: {
     store: waterBillStore(),
+  },
+  passport: {
+    store: passportStore(),
   },
 };
 
@@ -35,7 +39,11 @@ const { store, labels } = storeMapping[storeType] || {};
             <p class="text-base">Recharge Amount</p>
             <p class="font-bold text-base">
               <span class="text-paybill-secondary">GHS</span>
-              {{ store.rechargeAmount || store.rechargeAmountWater }}
+              {{
+                store.rechargeAmount ||
+                store.rechargeAmountWater ||
+                store.passportPrice
+              }}
             </p>
           </div>
           <!---->
@@ -49,7 +57,11 @@ const { store, labels } = storeMapping[storeType] || {};
             <p class="text-base">Payment Amount</p>
             <p class="font-bold text-base">
               <span class="text-paybill-secondary">GHS</span>
-              {{ store.rechargeAmount || store.rechargeAmountWater }}
+              {{
+                store.rechargeAmount ||
+                store.rechargeAmountWater ||
+                store.passportPrice
+              }}
             </p>
           </div>
         </div>

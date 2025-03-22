@@ -1,5 +1,4 @@
 <script setup>
-import TheGaming from "@/components/Categories/TheGaming.vue";
 import ThePaymentContainer from "@/components/Homeview/ThePaymentContainer.vue";
 import TheSecurityContainer from "@/components/Homeview/TheSecurityContainer.vue";
 import TheSocialsContainer from "@/components/Homeview/TheSocialsContainer.vue";
@@ -19,6 +18,7 @@ import TheElectricity from "@/components/Categories/TheElectricity.vue";
 import TheWaterBill from "@/components/Categories/TheWaterBill.vue";
 import Wifi from "@/components/icons/categories/wifi.vue";
 import Mobile from "@/components/icons/categories/mobile.vue";
+import ThePassport from "@/components/Categories/ThePassport.vue";
 
 const activeButton = ref(0);
 const activeSection = ref(0);
@@ -125,7 +125,7 @@ const setActive = (index) => {
         >
           <div v-if="activeSection === 0"><TheElectricity /></div>
           <div v-if="activeSection === 1"><TheWaterBill /></div>
-          <div v-if="activeSection === 2"><TheGaming /></div>
+          <div v-if="activeSection === 2"><ThePassport /></div>
         </div>
         <!--Ads-->
         <div
@@ -276,7 +276,7 @@ const setActive = (index) => {
               <!---->
               <ThePaymentContainer class="pt-5"
                 ><img
-                  class="h-10 "
+                  class="h-10"
                   src="../assets/homeview/apple-pay.jpg"
                   alt="apple-pay"
               /></ThePaymentContainer>

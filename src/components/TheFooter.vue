@@ -17,13 +17,7 @@
           <div
             class="text-[14px] leading-[30px] text-center text-black lg:mr-[40px] mr-7 mb-[13px]"
           >
-            <a href="/paybill">Transact</a>
-          </div>
-          <!---->
-          <div
-            class="text-[14px] leading-[30px] text-center text-black lg:mr-[40px] mr-7 mb-[13px]"
-          >
-            <a href="/shop">Shop</a>
+            <a href="/paybill">Home</a>
           </div>
           <!---->
           <div
@@ -41,9 +35,7 @@
           <div
             class="text-[14px] leading-[30px] text-center text-black lg:mr-[40px] mr-7 mb-[13px]"
           >
-            <a href="https://merchant.brij.money/auth/register"
-              >Enroll As A Biller</a
-            >
+            <router-link to="">Suggest A Biller</router-link>
           </div>
         </div>
         <!---->
