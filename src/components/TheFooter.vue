@@ -35,7 +35,7 @@
           <div
             class="text-[14px] leading-[30px] text-center text-black lg:mr-[40px] mr-7 mb-[13px]"
           >
-            <router-link to="">Suggest A Biller</router-link>
+            <router-link to="/suggest-biller">Suggest A Biller</router-link>
           </div>
         </div>
         <!---->

@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import SummaryView from "@/views/SummaryView.vue";
 import ProfileManagementView from "@/views/ProfileManagementView.vue";
 import { pay4meRoutes } from "./pay4me";
+import SuggestBiller from "@/views/SuggestBiller.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: "/profile",
       name: "profile management",
       component: ProfileManagementView,
+    },
+    {
+      path: "/suggest-biller",
+      name: "suggest-biller",
+      component: SuggestBiller,
     },
     {
       path: "/:pathMatch(.*)*",

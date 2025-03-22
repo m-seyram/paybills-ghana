@@ -7,6 +7,7 @@ const router = useRouter();
 function submit() {
   // Navigate to the "payment-view" page
   router.push("/").then(() => {
+    window.location.reload();
     // Once the navigation is complete, show the success toast
     toast.success("Account is successfully Created and verified", {
       description: "You can make bill payment now :)",

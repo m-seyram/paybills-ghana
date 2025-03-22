@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import { useForm, useField } from "vee-validate";
 import { signUpSchema } from "@/utils/validations/auth";
-import ArrowDown from "../icons/common/arrowDown.vue";
 import Eye from "../icons/common/eye.vue";
 import { EyeOff } from "lucide-vue-next";
 import TheOtp from "./TheOtp.vue";
@@ -15,7 +14,6 @@ const { handleSubmit } = useForm({
   validationSchema: signUpSchema,
 });
 
-const { value: phone, errorMessage: phoneError } = useField("phone");
 const { value: email, errorMessage: emailError } = useField("email");
 const { value: password, errorMessage: passwordError } = useField("password");
 const { value: confirmPassword, errorMessage: confirmPasswordError } =
@@ -24,9 +22,9 @@ const { value: termsAccepted, errorMessage: termsError } =
   useField("termsAccepted");
 
 // Function to toggle OTP screen
-const changeScreen = handleSubmit(() => {
+function changeScreen() {
   switchScreen.value = true;
-});
+}
 </script>
 
 <template>
@@ -38,35 +36,6 @@ const changeScreen = handleSubmit(() => {
         <span class="text-paybill-secondary">Click here</span>
       </p>
       <form @submit.prevent="changeScreen">
-        <div class="mb-5">
-          <label class="font-bold block text-base mb-2">Phone number</label>
-          <div
-            class="h-[58px] w-full border rounded-lg px-5 flex items-center gap-2"
-          >
-            <div class="relative">
-              <select
-                class="bg-white border-none pr-8 appearance-none text-base cursor-pointer"
-              >
-                <option value="GH">🇬🇭 +233</option>
-                <option value="NG">🇳🇬 +234</option>
-                <option value="KE">🇰🇪 +254</option>
-              </select>
-              <div
-                class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none border-gray-400 border-r"
-              >
-                <ArrowDown />
-              </div>
-            </div>
-            <input
-              v-model="phone"
-              class="outline-none w-full"
-              type="text"
-              placeholder="Phone number"
-            />
-          </div>
-          <p class="text-red-500 text-sm">{{ phoneError }}</p>
-        </div>
-
         <div class="mt-5">
           <label class="font-bold block text-base mb-2">Email Address</label>
           <input
@@ -125,8 +94,9 @@ const changeScreen = handleSubmit(() => {
           >
             <input
               v-model="termsAccepted"
-              class="h-6 w-6 rounded-md"
               type="checkbox"
+              :true-value="true"
+              :false-value="false"
             />
             <p class="text-sm">
               By submitting this form, you accept Paybills.Africa Terms &
