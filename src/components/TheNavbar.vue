@@ -59,7 +59,7 @@ function logout() {
         <router-link to="/"
           ><div>
             <img
-              class="w-[200px] h-12"
+              class=" h-12"
               src="../assets//logo.png"
               alt="logo"
             /></div

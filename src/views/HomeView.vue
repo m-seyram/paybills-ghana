@@ -184,22 +184,19 @@ const setActive = (index) => {
         >
           <!---->
           <div class="flex justify-center lg:justify-normal lg:flex-none">
-            <div
-              class="lg:w-[408px] lg:h-[400px] bg-[#FFEFCE] flex justify-center pt-[50px] rounded-t-[40px]"
-            >
-              <img
-                class="h-[350px]"
-                src="../assets/homeview/brij-mobile.png"
-                alt="brij-mobile"
-              />
-            </div>
+            <img
+              class="h-[350px]"
+              src="../assets/homeview/paybill-mobile.png"
+              alt="brij-mobile"
+            />
           </div>
           <!---->
           <div class="pb-5 lg:pb-0">
             <h2
               class="font-bold text-4xl text-center lg:text-start mt-5 lg:mt-0"
             >
-              Download the <span class="text-[#D9B228]">Brj App</span> Today
+              Download the
+              <span class="text-[#D9B228]">Paybills Ghana App</span> Today
             </h2>
             <p class="mt-5 text-base font-meduim text-center lg:text-start">
               Access the power of Remittance and Bill Payment at your fingertips
