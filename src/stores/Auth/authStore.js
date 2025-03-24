@@ -7,7 +7,7 @@ export const useAuthStore = defineStore("auth", () => {
 
   // Dummy user database
   const users = ref([
-    { id: 1, email: "Johndoe@gmail.com", password: "password123" },
+    { id: 1, email: "johndoe@gmail.com", password: "password123" },
     { id: 2, email: "user@example.com", password: "123456" },
   ]);
 
