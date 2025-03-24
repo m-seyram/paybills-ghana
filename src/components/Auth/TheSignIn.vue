@@ -4,7 +4,12 @@ import { ref } from "vue";
 import { EyeOff } from "lucide-vue-next";
 import Eye from "../icons/common/eye.vue";
 import { signInSchema } from "@/utils/validations/auth";
-import router from "@/router";
+import { toast } from "vue-sonner";
+import { useAuthStore } from "@/stores/Auth/authStore";
+
+const authStore = useAuthStore();
+const showPassword = ref(false);
+const isDialogCloseEnabled = ref(false);
 
 const { handleSubmit } = useForm({
   validationSchema: signInSchema,
@@ -13,11 +18,21 @@ const { handleSubmit } = useForm({
 const { value: email, errorMessage: emailError } = useField("email");
 const { value: password, errorMessage: passwordError } = useField("password");
 
-function onSubmit() {
-  router.push("/");
-}
+const onSubmit = handleSubmit(() => {
+  const result = authStore.login(email.value, password.value);
 
-const showPassword = ref(false);
+  if (result.success) {
+    toast.success("Welcome Back!", {
+      description: "You can make bill payments now :)",
+    });
+    isDialogCloseEnabled.value = true;
+  } else {
+    toast.error("Login Failed", {
+      description: result.message,
+    });
+    isDialogCloseEnabled.value = false;
+  }
+});
 </script>
 
 <template>
@@ -63,15 +78,16 @@ const showPassword = ref(false);
             </div>
             <p class="text-red-500 text-sm">{{ passwordError }}</p>
           </div>
-          <div>
-            <button
-              @click="onSubmit"
-              class="w-full h-[58px] font-bold text-base text-paybill-primary bg-paybill-secondary rounded-full mt-7"
-              type="submit"
-            >
-              Continue
-            </button>
-          </div>
+            
+        
+
+          <button
+            v-if="!isDialogCloseEnabled"
+            @click.prevent="onSubmit"
+            class="w-full h-[58px] font-bold text-base text-paybill-primary bg-paybill-secondary rounded-full mt-7"
+          >
+            Continue
+          </button>
         </form>
       </div>
     </div>

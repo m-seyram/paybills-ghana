@@ -4,12 +4,21 @@ import ArrowDown from "../icons/common/arrowDown.vue";
 import TheCustomDropdown from "../common/TheCustomDropdown.vue";
 import { useRouter } from "vue-router";
 import { electricityStore } from "@/stores/categories/electricityStore";
+import { useAuthStore } from "@/stores/Auth/authStore";
+import { toast } from "vue-sonner";
 
 const router = useRouter();
+const authStore = useAuthStore();
 const electricStore = electricityStore();
 
-
 function Continue() {
+  if (!authStore.isAuthenticated) {
+    toast.warning("Access Denied", {
+      description: "You need to log in first to make transactions",
+    });
+    return;
+  }
+
   router.push("/summary/electricity");
 }
 </script>
@@ -105,7 +114,6 @@ function Continue() {
       <!---->
       <div>
         <button
-          @click.prevent="Continue"
           class="2xl:w-[587px] w-full h-[58px] font-bold text-base text-paybill-primary bg-paybill-secondary rounded-full"
           type="submit"
         >

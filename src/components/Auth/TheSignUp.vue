@@ -5,8 +5,11 @@ import { signUpSchema } from "@/utils/validations/auth";
 import Eye from "../icons/common/eye.vue";
 import { EyeOff } from "lucide-vue-next";
 import TheOtp from "./TheOtp.vue";
+import { useAuthStore } from "@/stores/Auth/authStore";
+import { toast } from "vue-sonner";
 
 const switchScreen = ref(false);
+const authStore = useAuthStore();
 const showPassword = ref(false);
 const showConfirmPassword = ref(false);
 //Sign Up
@@ -22,9 +25,28 @@ const { value: termsAccepted, errorMessage: termsError } =
   useField("termsAccepted");
 
 // Function to toggle OTP screen
-function changeScreen() {
-  switchScreen.value = true;
-}
+const onSubmit = handleSubmit(async () => {
+  console.log("Submitting registration...");
+  const result = await authStore.register(email.value, password.value);
+
+  console.log("Registration Result:", result); // Check what result is returned
+
+  if (result.success) {
+    switchScreen.value = true;
+    console.log("Screen should switch now:", switchScreen.value); // Verify if this updates
+  } else {
+    toast.error("Registration Failed", {
+      description: result.message,
+    });
+  }
+});
+
+// Function to finalize account creation after OTP verification
+const completeRegistration = () => {
+  toast.success("Account Created!", {
+    description: "You can now log in and start using the platform.",
+  });
+};
 </script>
 
 <template>
@@ -35,7 +57,7 @@ function changeScreen() {
         Already have an account?
         <span class="text-paybill-secondary">Click here</span>
       </p>
-      <form @submit.prevent="changeScreen">
+      <form @submit.prevent="onSubmit">
         <div class="mt-5">
           <label class="font-bold block text-base mb-2">Email Address</label>
           <input
@@ -108,8 +130,9 @@ function changeScreen() {
 
         <div>
           <button
-            class="w-full h-[58px] font-bold text-base text-paybill-primary bg-paybill-secondary rounded-full mt-7"
+            @submit.prevent="onSubmit"
             type="submit"
+            class="w-full h-[58px] font-bold text-base text-paybill-primary bg-paybill-secondary rounded-full mt-7"
           >
             Continue
           </button>
@@ -118,7 +141,7 @@ function changeScreen() {
     </div>
 
     <div v-else>
-      <TheOtp />
+      <TheOtp @verified="completeRegistration" />
     </div>
   </div>
 </template>

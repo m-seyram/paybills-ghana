@@ -4,11 +4,21 @@ import ArrowDown from "../icons/common/arrowDown.vue";
 import { useRouter } from "vue-router";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { passportStore } from "@/stores/categories/passportStore";
+import { useAuthStore } from "@/stores/Auth/authStore";
+import { toast } from "vue-sonner";
 
 const router = useRouter();
+const authStore = useAuthStore();
 const usePassportStore = passportStore();
 
 function Continue() {
+  if (!authStore.isAuthenticated) {
+    toast.warning("Access Denied", {
+      description: "You need to log in first to make transactions",
+    });
+    return;
+  }
+
   router.push("/summary/passport");
 }
 </script>

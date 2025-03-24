@@ -4,11 +4,21 @@ import ArrowDown from "../icons/common/arrowDown.vue";
 import TheCustomDropdown from "../common/TheCustomDropdown.vue";
 import { useRouter } from "vue-router";
 import { waterBillStore } from "@/stores/categories/waterBillStore";
+import { useAuthStore } from "@/stores/Auth/authStore";
+import { toast } from "vue-sonner";
 
 const router = useRouter();
+const authStore = useAuthStore();
 const waterStore = waterBillStore();
 
 function Continue() {
+  if (!authStore.isAuthenticated) {
+    toast.warning("Access Denied", {
+      description: "You need to log in first to make transactions",
+    });
+    return;
+  }
+
   router.push("/summary/water");
 }
 </script>

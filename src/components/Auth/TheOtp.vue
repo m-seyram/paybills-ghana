@@ -1,17 +1,13 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { toast } from "vue-sonner";
+import DialogClose from "../ui/dialog/DialogClose.vue";
 
 const router = useRouter();
 
 function submit() {
-  // Navigate to the "payment-view" page
-  router.push("/").then(() => {
-    window.location.reload();
-    // Once the navigation is complete, show the success toast
-    toast.success("Account is successfully Created and verified", {
-      description: "You can make bill payment now :)",
-    });
+  toast.success("Account is successfully Created and verified", {
+    description: "You can make bill payment now :)",
   });
 }
 </script>
@@ -65,13 +61,12 @@ function submit() {
         </div>
         <!---->
         <div>
-          <button
-            @click.prevent="submit()"
+          <DialogClose
             class="w-full h-[58px] font-bold text-base text-paybill-primary bg-paybill-secondary rounded-full mt-7"
-            type="submit"
+            ><button @click.prevent="submit()" type="submit">
+              Submit
+            </button></DialogClose
           >
-            Submit
-          </button>
         </div>
       </form>
       <!---->

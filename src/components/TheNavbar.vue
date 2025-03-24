@@ -10,11 +10,13 @@ import Account from "./icons/common/account.vue";
 import Logout from "./icons/common/logout.vue";
 import router from "@/router";
 import { useCountryStore } from "@/stores/countryStore";
+import { useAuthStore } from "@/stores/Auth/authStore";
 
 let open = ref(false);
 const dropdown = ref(false);
 
-const loggedIn = ref(false);
+//const loggedIn = ref(false);
+const authStore = useAuthStore();
 
 function navMenu() {
   open.value = !open.value;
@@ -43,11 +45,6 @@ const countryStore = useCountryStore();
 onMounted(() => {
   countryStore.detectCountry(); // Detect country on page load
 });
-
-function logout() {
-  loggedIn.value = true;
-  router.push("/");
-}
 </script>
 <template>
   <nav class="fixed z-10 top-0 w-full">
@@ -58,11 +55,7 @@ function logout() {
         <!--logo-->
         <router-link to="/"
           ><div>
-            <img
-              class=" h-12"
-              src="../assets//logo.png"
-              alt="logo"
-            /></div
+            <img class="h-12" src="../assets//logo.png" alt="logo" /></div
         ></router-link>
         <span
           @click="navMenu()"
@@ -79,7 +72,10 @@ function logout() {
           class="xl:flex items-center gap-3 bg-white absolute xl:static xl:w-auto w-full pt-3 pb-2 xl:pt-0 xl:pb-0 pl-5 xl:pl-0"
           :class="[open ? 'left-0' : 'left-[-100%]']"
         >
-          <div class="flex items-center gap-3" v-if="loggedIn">
+          <div
+            class="flex items-center gap-3"
+            v-if="!authStore.isAuthenticated"
+          >
             <!--signIn-->
             <Dialog
               ><div>
@@ -130,7 +126,7 @@ function logout() {
               <ArrowDown />
             </div>
             <!---->
-            <div class="xl:hidden block">
+            <div v-if="authStore.isAuthenticated" class="xl:hidden block">
               <router-link to="/profile">
                 <div class="flex gap-2 items-center">
                   <Account />
@@ -138,7 +134,10 @@ function logout() {
                 </div>
               </router-link>
               <!---->
-              <button @click="logout" class="mt-4 flex gap-2 items-center">
+              <button
+                @click="authStore.logout"
+                class="mt-4 flex gap-2 items-center"
+              >
                 <Logout />
                 <p>Logout</p>
               </button>
@@ -146,6 +145,7 @@ function logout() {
           </div>
           <!--Dropdown-->
           <div
+            v-if="authStore.isAuthenticated"
             class="absolute border w-[212px] h-[109px] rounded-xl shadow-md bg-white xl:top-[70px] p-5"
             v-show="dropdown"
           >
@@ -156,7 +156,10 @@ function logout() {
               </div>
             </router-link>
             <!---->
-            <button @click="logout" class="mt-4 flex gap-2 items-center">
+            <button
+              @click="authStore.logout"
+              class="mt-4 flex gap-2 items-center"
+            >
               <Logout />
               <p>Logout</p>
             </button>
